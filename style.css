@@ -1,3 +1,7 @@
+/* =========================
+   RESET
+========================= */
+
 *{
     margin:0;
     padding:0;
@@ -11,7 +15,9 @@ body{
     height:100vh;
 }
 
-/* ===== Màn hình mở đầu ===== */
+/* =========================
+   MÀN HÌNH MỞ ĐẦU
+========================= */
 
 #startScreen{
     position:fixed;
@@ -41,444 +47,316 @@ body{
 }
 
 #startBtn{
-
     border:none;
     padding:18px 40px;
     border-radius:40px;
     cursor:pointer;
-
     background:#ff5ca8;
-    color:white;
-
+    color:#fff;
     font-size:20px;
-
     transition:.3s;
 }
 
 #startBtn:hover{
-
     transform:scale(1.05);
-
     background:#ff3f98;
-
 }
 
-/* ===== Nội dung ===== */
+/* =========================
+   NỘI DUNG CHÍNH
+========================= */
 
 #main{
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
     width:100vw;
-
     height:100vh;
-
+    position:relative;
 }
 
 .card{
-
     width:750px;
-
     max-width:90%;
-
-    background:rgba(255,255,255,.55);
-
+    background:rgba(255,255,255,.58);
     backdrop-filter:blur(18px);
-
     border-radius:30px;
-
     padding:45px;
-
     text-align:center;
-
     box-shadow:0 20px 60px rgba(255,120,180,.25);
 
+    position:relative;
+    z-index:5;
 }
 
 #typing{
-
     min-height:180px;
-
     font-size:28px;
-
     line-height:48px;
-
     color:#d63384;
-
     font-weight:bold;
-
 }
 
-/* ===== Sticker ===== */
+/* =========================
+   STICKER
+========================= */
 
 .stickers{
-
     font-size:34px;
-
-    animation:float 4s ease-in-out infinite;
-
     margin-bottom:25px;
-
+    animation:float 4s ease-in-out infinite;
 }
 
 .bottom{
-
     margin-top:25px;
-
 }
 
 @keyframes float{
 
-0%{
+    0%{
+        transform:translateY(0);
+    }
 
-transform:translateY(0px);
+    50%{
+        transform:translateY(-8px);
+    }
 
-}
-
-50%{
-
-transform:translateY(-8px);
-
-}
-
-100%{
-
-transform:translateY(0px);
+    100%{
+        transform:translateY(0);
+    }
 
 }
-
-}
-
-/* ===== Tim ===== */
+/* =========================
+   TIM BAY
+========================= */
 
 .heart{
-
     position:fixed;
-
     bottom:-50px;
-
     font-size:28px;
-
-    animation:heartFly linear forwards;
-
     pointer-events:none;
-
+    animation:heartFly linear forwards;
+    z-index:1;
 }
 
 @keyframes heartFly{
 
-0%{
+    0%{
+        transform:translateY(0) scale(.8);
+        opacity:0;
+    }
 
-transform:translateY(0) scale(.8);
+    20%{
+        opacity:1;
+    }
 
-opacity:0;
-
-}
-
-20%{
-
-opacity:1;
-
-}
-
-100%{
-
-transform:translateY(-120vh) rotate(360deg);
-
-opacity:0;
+    100%{
+        transform:translateY(-120vh) rotate(360deg);
+        opacity:0;
+    }
 
 }
 
-}
-
-/* ===== Hoa rơi ===== */
+/* =========================
+   CÁNH HOA RƠI
+========================= */
 
 .petal{
-
     position:fixed;
-
     top:-50px;
-
     font-size:24px;
-
     pointer-events:none;
-
     animation:petalFall linear forwards;
-
+    z-index:1;
 }
 
 @keyframes petalFall{
 
-0%{
+    0%{
+        transform:translateY(-50px) rotate(0deg);
+        opacity:1;
+    }
 
-transform:translateY(-50px) rotate(0deg);
-
-opacity:1;
-
-}
-
-100%{
-
-transform:translateY(110vh) translateX(150px) rotate(720deg);
-
-opacity:0;
+    100%{
+        transform:translateY(110vh) translateX(150px) rotate(720deg);
+        opacity:0;
+    }
 
 }
 
+/* =========================
+   KHUNG ẢNH POLAROID
+========================= */
+
+.photo-wall{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:2;
 }
 
-/* ===== Responsive ===== */
-
-@media(max-width:768px){
-
-#typing{
-
-font-size:22px;
-
-line-height:38px;
-
+.polaroid{
+    position:absolute;
+    width:85px;
+    background:#fff;
+    padding:5px;
+    padding-bottom:18px;
+    border-radius:10px;
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
+    opacity:0;
+    animation:floatPhoto 4s ease-in-out infinite;
 }
 
-.card{
-
-padding:25px;
-
+.polaroid img{
+    width:100%;
+    height:100px;
+    object-fit:cover;
+    border-radius:5px;
 }
 
-.stickers{
-
-font-size:26px;
-
+.polaroid span{
+    display:block;
+    text-align:center;
+    margin-top:8px;
+    font-size:18px;
 }
 
-#startScreen h1{
-
-font-size:70px;
-
-}
-
-}
-.photos{
-
-position:fixed;
-
-inset:0;
-
-pointer-events:none;
-
-}
-
-.photo{
-
-position:absolute;
-
-width:130px;
-
-height:130px;
-
-object-fit:cover;
-
-border-radius:20px;
-
-border:5px solid white;
-
-box-shadow:0 10px 30px rgba(0,0,0,.15);
-
-animation:floatPhoto 4s ease-in-out infinite;
-
-}
+/* Góc trái trên */
 
 .p1{
-
-top:40px;
-
-left:40px;
-
+    top:15px;
+    left:15px;
+    transform:rotate(-8deg);
 }
+
+/* Góc phải trên */
 
 .p2{
-
-top:80px;
-
-right:60px;
-
+    top:15px;
+    right:15px;
+    transform:rotate(8deg);
 }
+
+/* Góc trái dưới */
 
 .p3{
-
-left:40px;
-
-bottom:120px;
-
+    bottom:15px;
+    left:15px;
+    transform:rotate(6deg);
 }
+
+/* Góc phải dưới */
 
 .p4{
-
-right:60px;
-
-bottom:90px;
-
-}
-
-.p5{
-
-top:50%;
-
-left:20px;
-
-transform:translateY(-50%);
-
-}
-
-.p6{
-
-top:50%;
-
-right:20px;
-
-transform:translateY(-50%);
-
+    bottom:15px;
+    right:15px;
+    transform:rotate(-6deg);
 }
 
 @keyframes floatPhoto{
 
-0%{
-
-transform:translateY(0px);
-
-}
-
-50%{
-
-transform:translateY(-10px);
-
-}
-
-100%{
-
-transform:translateY(0px);
-
-}
-
-}
-.photo-wall{
-
-    position:fixed;
-    
-    inset:0;
-    
-    pointer-events:none;
-    
-    z-index:2;
-    
+    0%{
+        transform:translateY(0);
     }
-    
+
+    50%{
+        transform:translateY(-8px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px){
+
+    .card{
+        width:92%;
+        padding:28px 22px;
+    }
+
+    #typing{
+        font-size:20px;
+        line-height:36px;
+        min-height:150px;
+    }
+
+    .stickers{
+        font-size:26px;
+    }
+
+    #startScreen h1{
+        font-size:70px;
+    }
+
+    #startScreen h2{
+        font-size:28px;
+    }
+
+    #startScreen p{
+        font-size:16px;
+    }
+
+    #startBtn{
+        padding:15px 32px;
+        font-size:18px;
+    }
+
+    /* Thu nhỏ ảnh trên điện thoại */
+
     .polaroid{
-    
-    position:absolute;
-    
-    width:160px;
-    
-    background:white;
-    
-    padding:10px;
-    
-    padding-bottom:35px;
-    
-    border-radius:10px;
-    
-    box-shadow:0 15px 30px rgba(0,0,0,.18);
-    
-    animation:floatPhoto 4s ease-in-out infinite;
-    
-    opacity:0;
-    
+        width:65px;
+        padding:4px;
+        padding-bottom:12px;
     }
-    
+
     .polaroid img{
-    
-    width:100%;
-    
-    height:180px;
-    
-    object-fit:cover;
-    
-    border-radius:5px;
-    
+        height:75px;
     }
-    
+
     .polaroid span{
-    
-    display:block;
-    
-    margin-top:10px;
-    
-    text-align:center;
-    
-    font-size:24px;
-    
+        font-size:14px;
+        margin-top:5px;
     }
+
     .p1{
+        top:8px;
+        left:8px;
+    }
 
-        top:40px;
-        
-        left:-250px;
-        
-        transform:rotate(-10deg);
-        
-        }
-        
-        .p2{
-        
-        top:80px;
-        
-        right:-250px;
-        
-        transform:rotate(8deg);
-        
-        }
-        
-        .p3{
-        
-        bottom:70px;
-        
-        left:-250px;
-        
-        transform:rotate(7deg);
-        
-        }
-        
-        .p4{
-        
-        bottom:90px;
-        
-        right:-250px;
-        
-        transform:rotate(-8deg);
-        
-        }
-        @keyframes floatPhoto{
+    .p2{
+        top:8px;
+        right:8px;
+    }
 
-            0%{
-            
-            transform:translateY(0px);
-            
-            }
-            
-            50%{
-            
-            transform:translateY(-8px);
-            
-            }
-            
-            100%{
-            
-            transform:translateY(0px);
-            
-            }
-            
-            }
+    .p3{
+        bottom:8px;
+        left:8px;
+    }
+
+    .p4{
+        bottom:8px;
+        right:8px;
+    }
+
+}
+
+@media (min-width: 1200px){
+
+    .card{
+        width:820px;
+    }
+
+    .polaroid{
+        width:110px;
+    }
+
+    .polaroid img{
+        height:125px;
+    }
+
+}
